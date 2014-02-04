@@ -1,0 +1,7 @@
+<%= form_for @user, url: {action: "create"} do | user_form | %>
+  <ul>
+    <li><%= user_form.label :username %>:<%= user_form.text_field :username %></li>
+    <li><%= user_form.label :email %>:<%= user_form.text_field :email %></li>
+    <li><%= submit_tag("Create Account") %></li>
+  </ul>
+<% end %>
