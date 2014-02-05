@@ -5,7 +5,8 @@ Lister::Application.routes.draw do
   post '/session/create', to: 'session#create'
 
   get 'users/new', to: 'users#new'
-  get 'users/show', to: 'users#show'
+  get '/', to: 'users#show'
+  root 'users#show'
   post 'users/create', to: 'users#create'
 
 
