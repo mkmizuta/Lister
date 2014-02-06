@@ -1,7 +1,26 @@
-<%= form_for @user, url: {action: "create"} do | user_form | %>
-  <ul>
-    <li><%= user_form.label :username %>:<%= user_form.text_field :username %></li>
-    <li><%= user_form.label :email %>:<%= user_form.text_field :email %></li>
-    <li><%= submit_tag("Create Account") %></li>
-  </ul>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<h1>Busy Bee Sign Up</h1>
+
+<%= form_for @user, url: {action: "create"} do | f | %>
+  
+    <%= f.label :username %>:<br>
+    <%= f.text_field :username %>
+    <br>
+    <%= f.label :email %>:<br>
+    <%= f.text_field :email %>
+    <br>
+    <%= f.label :password %>:<br>
+    <%= f.text_field :password %>
+    <br>
+    <%= f.label :password_confirmation %>:<br>
+    <%= f.text_field :password_confirmation %>
+    <br>
+    <%= submit_tag("Sign me up!") %>
+
 <% end %>

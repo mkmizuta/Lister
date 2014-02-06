@@ -2,6 +2,8 @@ require 'bcrypt'
 
 class User < ActiveRecord::Base
   attr_accessor :password, :password_confirmation
+  has_many :lists
+  has_many :list_items, through: :lists
 
   validates :username, :email, presence: true, uniqueness: true
   validates_format_of :email, { with: /\w+@\w+\.\w+/, message: "is not a valid address" }
@@ -21,7 +23,7 @@ class User < ActiveRecord::Base
         return user
       end
     end
-    
+
     return nil
   end
 end

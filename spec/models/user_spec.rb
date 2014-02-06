@@ -60,6 +60,15 @@ describe "User" do
       user.valid?
       expect(user.errors[:password]).to include "must be at least 6 characters"
     end
+
+    it "has many lists" do
+      user { should have_many(:list) }
+    end
+
+    it "has many list items" do
+      user { should have_many(:list_item) }
+    end
+
   end
   
   describe "#password_digest" do

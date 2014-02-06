@@ -1,13 +1,23 @@
 Lister::Application.routes.draw do
   
+  resources :lists
   
-  get '/session/new',  to: 'session#new'
+  get 'signup',  to: 'users#new'
+  get 'signin',  to: 'session#new'
+  get 'signout', to: 'session#destroy'
   post '/session/create', to: 'session#create'
-
+  
   get 'users/new', to: 'users#new'
   get '/', to: 'users#show'
   root 'users#show'
   post 'users/create', to: 'users#create'
+
+  get 'lists/new', to: 'lists#new'
+  get 'lists/create', to: 'lists#create'
+  get 'lists/show', to: 'lists#show'
+  get 'lists/index', to: 'lists#index'
+
+
 
 
 

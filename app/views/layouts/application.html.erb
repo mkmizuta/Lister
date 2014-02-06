@@ -7,7 +7,36 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+   <div id='menu'>
+      <ul>
+        <li>
+          <a href="/" style="color:white">BUSY BEE</a>
+        </li>
+        <li>
+          <a href="/about" style="color:white">about</a>
+        </li>
+        <% if @current_user  %>
+        <li>
+          <a href="/lists" style="color:white" >lists</a>
+            <ul>
+              <% @current_user.lists.each do | list | %>
+                <li><%= link_to list.name, list %></li>
+              <% end %>
+              <li> <%= link_to "create a new list", "/lists/new" %> </li>
+            </ul>
+        </li>
+        <% end %>
+        <li>
+          <% if @current_user %>
+            <a href="/signout" style="color:white">sign out</a>
+          <%else%>
+           <a href="/signin" style="color:white">sign in</a>
+          <%end%>
+        </li>
+      </ul>
+    </div>
 
+<%=notice%>
 <%= yield %>
 
 </body>
