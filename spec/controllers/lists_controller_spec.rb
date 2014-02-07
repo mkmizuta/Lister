@@ -48,7 +48,7 @@ describe ListsController do
     # request.session[:user_id] = user.id
     
     it "is successful" do
-      get :show, user_id: list.id
+      get :show, id: list.id
       expect(response).to be_successful
     end
   end
