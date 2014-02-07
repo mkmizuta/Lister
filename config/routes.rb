@@ -16,7 +16,10 @@ Lister::Application.routes.draw do
   get 'lists/create', to: 'lists#create'
   get 'lists/show', to: 'lists#show'
   get 'lists/index', to: 'lists#index'
+  get 'lists/:id', to: 'lists#destroy'
 
+  post 'list_items/create', to: 'list_items#create'
+  get 'list_items/destroy', to: 'list_items#destroy'
 
 
 

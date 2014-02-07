@@ -5,21 +5,23 @@
 <br>
 <br>
 
+<p>
+  <strong>Name:</strong>
+  <%= @list.name  %>
+</p>
 
-<%= @list.name  %>
+<% if @list.list_items %>
+<strong>To Do:</strong>
+<%= render "list_item_form" %>
+<ul id = "list_items">
+<%@list.list_items.each do | li |%>
+<li  id="list_item_<%="#{li.id}"%>">
+  <%= li.to_do %> <%= link_to 'Done', {controller: 'list_items', action: 'destroy', id: li.id }, remote: true  %>
+</li>
+<%end%>
+</ul>
+<%end%>
 
 
-<!-- Add items to your list, <%#= @list.name  %>.
-
-<%#= form_for @list, url: {action: "create"} do | f | %>
-  
-    <%#= f.label :to_do %>:<br>
-    <%#= f.text_field :to_do %>
-    <%#= hidden_field_tag :id, @list.id %>
-    <br>
-  
-   <%#= submit_tag("Add list items") %>
-
-<%# end %>
-
- -->
+<%= link_to 'Edit', edit_list_path(@list) %> |
+<%= link_to 'Back', lists_path %>

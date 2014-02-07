@@ -6,6 +6,7 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
+    @list_item = ListItem.new
   end
 
   def new
@@ -13,6 +14,7 @@ class ListsController < ApplicationController
   end
 
   def edit
+    @list = List.find(params[:id])
   end
 
   def create
@@ -28,9 +30,22 @@ class ListsController < ApplicationController
       # <a onclick= \"textBoxFocus('name')\">Try again if you want.</a>".html_safe
     end
   end
+
+ 
   
-  def destroy
+  def update
+   respond_to do 
+      if @list.update(list_params)
+        redirect_to @list, notice: 'List was successfully updated.' 
+      else
+        render action: 'edit' 
+      end
+    end
   end
 
-  
+  def destroy
+    @list = List.find(params[:id])
+    @list.destroy
+    redirect_to lists_url
+  end
 end

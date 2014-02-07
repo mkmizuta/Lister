@@ -45,7 +45,6 @@ describe ListsController do
 
   describe "GET 'show'" do
     let(:list) { create(:list) }
-    # request.session[:user_id] = user.id
     
     it "is successful" do
       get :show, id: list.id

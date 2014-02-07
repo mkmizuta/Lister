@@ -9,11 +9,14 @@ Create a list and get busy:
 
 <%= form_for @list, url: {action: "create"} do | f | %>
   
-    <%= f.label :name %>:<br>
-    <%= f.text_field :name %>
-    <%= hidden_field_tag :id, @current_user.id %>
-    <br>
-  
-   <%= submit_tag("Create list") %>
+  <%= f.label :name %>:<br>
+  <%= f.text_field :name %>
+  <%= hidden_field_tag :id, @current_user.id %>
+  <br>
+<!--   <%#= f.label :to_do %><br>
+  <%#= f.text_field :to_do %>
+  <%#= hidden_field_tag :id, @list_item.id %> -->
+
+  <%= submit_tag("Create list") %>
 
 <% end %>
