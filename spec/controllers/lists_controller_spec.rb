@@ -33,7 +33,7 @@ describe ListsController do
         request.session[:user_id] = user.id
 
         post :create, list: {name: nil}
-        expect(response).to redirect_to "/lists/new?notice=You%27re+list+failed+to+save."
+        expect(response).to redirect_to "/lists/new?notice=Your+list+failed+to+save."
       end
     
       it "does not create a list" do

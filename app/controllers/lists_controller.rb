@@ -23,7 +23,7 @@ class ListsController < ApplicationController
       flash[:notice] = "You're a Busy Bee! You've just made a new list."
       redirect_to @list
     else
-      redirect_to action: :new, notice: "You're list failed to save." 
+      redirect_to action: :new, notice: "Your list failed to save." 
 
       # <a onclick= \"textBoxFocus('name')\">Try again if you want.</a>".html_safe
     end
