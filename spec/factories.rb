@@ -20,4 +20,7 @@ FactoryGirl.define do
     to_do "Feed cat"
     list_id "1"
   end
+  factory :list_id do
+    list_id "1"
+  end
 end

@@ -2,7 +2,7 @@ class ListItemsController < ApplicationController
 
  def create
     @list_item = ListItem.new(params.require(:list_item).permit(:to_do)) 
-    @list = List.find(params[:list_id])
+    @list = List.find(params[:list_item][:list_id])
     @list_item.list = @list
     
     respond_to do |format|

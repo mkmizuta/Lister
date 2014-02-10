@@ -15,6 +15,7 @@ describe SessionController do
     context "when an existing user submits" do
       let(:user) { create(:user) }
       context "valid attributes" do
+        
         it "redirects" do
           post :create, username: user.username, password: user.password
           expect(response.status).to eq 302
