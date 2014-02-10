@@ -2,13 +2,18 @@
 <br>
 <br>
 <br>
-<br>
-<br>
 
 <h1>Busy Bee Sign Up</h1>
 
 <%= form_for @user, url: {action: "create"} do | f | %>
-  
+  <% if @user.errors.any? %>
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+    <% end %>
+
     <%= f.label :username %>:<br>
     <%= f.text_field :username %>
     <br>

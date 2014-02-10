@@ -13,7 +13,7 @@ class ListItemsController < ApplicationController
         format.js
       else
         format.html{
-          render :show
+          render action: :show, notice: "Your to do item failed to save."
         }
       end
     end      

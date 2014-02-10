@@ -1,0 +1,31 @@
+Welcome to Busy Bee!
+
+<h1>See how others are keeping busy...</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lists.each do | list | %>
+      <tr>
+        <td><%= list.name %></td>
+        <td><%= list.list_item %></td>
+    
+        <td><%= link_to 'Show', list %></td>
+        <td><%= link_to 'Destroy', list, class: "ajax-destroy", method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'See the busy hive', lists_path %>
+<%= link_to 'Destroy',  method: :delete, class: "destroy", data: { confirm: 'Are you sure?' } %>

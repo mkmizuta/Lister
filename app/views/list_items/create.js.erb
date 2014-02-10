@@ -1,9 +1,3 @@
-$('li').last().append (
-  '<li id=\"list_item_<%="#{@list_item.id}"%>\">
-    <%= j @list_item.to_do %> 
-    <%= j link_to 'Done', { controller: 'list_items', action: 'destroy', id: @list_item.id }, remote: true %>
-    </li>'
-  );
+$('#list_items').append('<li id=\"list_item_<%= "#{@list_item.id}" %>\"><%= j @list_item.to_do %><%= j link_to 'Done', { controller: 'list_items', action: 'destroy', id: @list_item.id }, remote: true %></li>');
 $('#list_item_to_do').val('');
 
-// doesn't work yet but need to commit!

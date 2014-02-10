@@ -6,9 +6,11 @@ Lister::Application.routes.draw do
   get 'signin',  to: 'session#new'
   get 'signout', to: 'session#destroy'
   post '/session/create', to: 'session#create'
+  get 'welcome', to: 'session#show', as: :welcome
+  get 'about', to: 'session#about', as: :about
   
   get 'users/new', to: 'users#new'
-  get '/', to: 'users#show'
+  get '/', to: 'lists#index'
   root 'users#show'
   post 'users/create', to: 'users#create'
 
@@ -18,8 +20,10 @@ Lister::Application.routes.draw do
   get 'lists/index', to: 'lists#index'
   get 'lists/:id', to: 'lists#destroy'
 
+
   post 'list_items/create', to: 'list_items#create'
   get 'list_items/destroy', to: 'list_items#destroy'
+
 
 
 

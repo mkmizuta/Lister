@@ -33,7 +33,12 @@ describe ListsController do
         request.session[:user_id] = user.id
 
         post :create, list: {name: nil}
-        expect(response).to redirect_to "/lists/new?notice=Your+list+failed+to+save."
+        expect(response).to render_template :new
+      end
+
+      it "sets a flash message" do
+        post :create, list: {name: nil}
+        expect(flash[:notice]).to eq "Your list failed to save."
       end
     
       it "does not create a list" do

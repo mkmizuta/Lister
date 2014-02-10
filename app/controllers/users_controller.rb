@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   end
 
   def show 
+    @lists = List.all
   end
 end
 
