@@ -1,7 +1,7 @@
 class SessionController < ApplicationController
 
   def new
-    if !@current_user.nil?
+    if !current_user.nil?
       redirect_to root_path
     else
       render :new
@@ -9,10 +9,10 @@ class SessionController < ApplicationController
   end
 
   def create
-    @user = User.find_by(username: params[:username]) 
-    if @user && User.authenticate(params[:username], params[:password]) 
+    @user = User.find_by(username: params[:username])
+    if @user && User.authenticate(params[:username], params[:password])
       session[:user_id] = @user.id
-      redirect_to root_path, notice: "Successfully signed in."   
+      redirect_to root_path, notice: "You've successfully signed in."
     else
       flash[:notice] = "Invalid username or password."
       render :new
@@ -22,5 +22,5 @@ class SessionController < ApplicationController
   def destroy
     session[:user_id] = nil
     redirect_to root_path, notice: "You've successfully signed out."
-  end  
-end 
+  end
+end

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Busy Bee</title>
-  <%= stylesheet_link_tag    "application", media: "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-   <div id='menu'>
+  <head>
+    <title>Busy Bee</title>
+    <%= stylesheet_link_tag "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+     <div id='menu'>
       <ul>
         <li>
           <a href="/" style="color:white">BUSY BEE</a>
@@ -15,29 +15,31 @@
         <li>
           <a href="/about" style="color:white">about</a>
         </li>
-        <% if @current_user %>
+          <% if @current_user %>
         <li>
           <a href="/lists" style="color:white" >lists</a>
             <ul>
-              <% @current_user.lists.each do | list | %>
+              <% @current_user.lists.last(5).each do | list | %>
                 <li><%= link_to list.name, list %></li>
               <% end %>
-              <li> <%= link_to "create a new list", "/lists/new" %> </li>
+              <li style="font-weight: bold"><%= link_to "see all your lists", "/lists" %> </li>
             </ul>
         </li>
-        <% end %>
+          <% end %>
         <li>
           <% if @current_user %>
             <a href="/signout" style="color:white">sign out</a>
-          <%else%>
+          <% else %>
            <a href="/signin" style="color:white">sign in</a>
-          <%end%>
+          <% end %>
         </li>
       </ul>
     </div>
 
-<div style= "color: purple; font-size: 16px"><%= notice %></div>
-<%= yield %>
-
-</body>
+    <% if notice %>
+    <div class="notice"><%= notice %></div>
+    <% end %>
+    <%= yield %>
+    <%= image_tag "/images/bee_logo3.png" %>
+  </body>
 </html>

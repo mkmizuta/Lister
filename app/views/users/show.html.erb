@@ -3,30 +3,24 @@
 <br>
 <br>
 
-
-<% if @current_user %>
-  Hello, <%= @current_user.username %>!
+<% if current_user %>
+  Hello, <%= current_user.username %>!
 <% end %>
 <ul>
-
   <% @lists.each do | list |  %>
-  <% if @current_user %>
-    <li><%= link_to list.name, list_path(list) %></li>
+  <% if current_user %>
+  <li><%= link_to list.name, list_path(list) %></li>
   <% else %>
-    <li><%= list.name %></li>
+  <li><%= list.name %></li>
+  <% end %>
+  <ul>
+    <% list.list_items.first(3).each do | td |  %>
+    <li><%= td.to_do %></li>
     <% end %>
-    <ul>
-      <% list.list_items.first(3).each do | td |  %>
-      <li><%= td.to_do %></li>
-      <% end %>   
 
-      <% if list.list_items.size > 3 %>
-        <li>...</li>
-       <%end%> 
-
-    </ul>
+    <% if list.list_items.size > 3 %>
+      <li>...</li>
+    <%end%> 
+  </ul>
   <% end %>
 </ul>
-
-
-

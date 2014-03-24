@@ -1,0 +1,7 @@
+<%= form_for @list, url: {action: "create"} do | f | %>
+  <%= f.text_field :name, placeholder: "create a new list" %>
+  <%= hidden_field_tag :id, @current_user.id %>
+
+  <%= submit_tag("create") %>
+
+<% end %>

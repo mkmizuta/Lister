@@ -1,10 +1,8 @@
 class ListItemsController < ApplicationController
 
  def create
-    @list_item = ListItem.new(params.require(:list_item).permit(:to_do)) 
-    @list = List.find(params[:list_item][:list_id])
-    @list_item.list = @list
-    
+    @list_item = ListItem.new(params.require(:list_item).permit(:to_do, :list_id))
+
     respond_to do |format|
       if @list_item.save
         format.html { 
@@ -16,9 +14,8 @@ class ListItemsController < ApplicationController
           render action: :show, notice: "Your to do item failed to save."
         }
       end
-    end      
-  end 
-
+    end
+  end
 
   def destroy
     @list_items = ListItem.find(params[:id])

@@ -1,9 +1,10 @@
 class ListsController < ApplicationController
 
   def index
-    if @current_user 
-      @others_lists = List.all - @current_user.lists 
-      @my_lists = @current_user.lists
+    if current_user
+      @others_lists = List.all - current_user.lists 
+      @my_lists = current_user.lists
+      @list = List.new
     else
       @others_lists = List.all
       @my_list = nil
@@ -25,25 +26,23 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(params.require(:list).permit(:name))
-    @list.user = @current_user
+    @list.user = current_user
 
     if @list.save
       flash[:notice] = "You're a Busy Bee! You've just made a new list."
       redirect_to @list
     else
-      flash[:notice] = "Your list failed to save." 
+      flash[:notice] = "Your list failed to save."
       render action: :new
     end
   end
 
- 
-  
   def update
    respond_to do 
       if @list.update(list_params)
-        redirect_to @list, notice: 'List was successfully updated.' 
+        redirect_to @list, notice: 'List was successfully updated.'
       else
-        render action: 'edit' 
+        render action: 'edit'
       end
     end
   end

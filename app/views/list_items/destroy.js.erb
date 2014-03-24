@@ -1,1 +1,1 @@
- $('#list_item_<%= params[:id] %>').remove()
+ $('#list_item_<%= params[:id] %>').slideUp("fast",function(){$(this).remove();});

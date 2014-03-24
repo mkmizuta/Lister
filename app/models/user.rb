@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   validates_format_of :email, { with: /\w+@\w+\.\w+/, message: "is not a valid address" }
   validates :password, presence: true, length: { minimum: 6, too_short: "must be at least 6 characters" }
   validates_confirmation_of :password
-  validates :password_confirmation, presence: true 
+  validates :password_confirmation, presence: true
 
   before_save :hash_password
 
@@ -27,6 +27,3 @@ class User < ActiveRecord::Base
     return nil
   end
 end
-
-
-

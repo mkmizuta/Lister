@@ -1,10 +1,7 @@
-<br>
-<br>
-<br>
-<br>
-
-<h1>Busy Bee Sign Up</h1>
-
+<div class="signup_form_header">
+<h2>Busy Bee Sign Up</h2>
+</div>
+<div class="signup_form">
 <%= form_for @user, url: {action: "create"} do | f | %>
   <% if @user.errors.any? %>
     <ul>
@@ -14,18 +11,11 @@
     </ul>
     <% end %>
 
-    <%= f.label :username %>:<br>
-    <%= f.text_field :username %>
-    <br>
-    <%= f.label :email %>:<br>
-    <%= f.text_field :email %>
-    <br>
-    <%= f.label :password %>:<br>
-    <%= f.text_field :password %>
-    <br>
-    <%= f.label :password_confirmation %>:<br>
-    <%= f.text_field :password_confirmation %>
-    <br>
-    <%= submit_tag("Sign me up!") %>
+    <%= f.text_field :username, placeholder: "pick a username" %>
 
+    <%= f.text_field :email, placeholder: "what's your email address?" %>
+    <%= f.password_field :password, placeholder: "pick a password" %>
+    <%= f.password_field :password_confirmation, placeholder: "confirm password" %>
+    <div style="text-align:center;padding-bottom:20px;"><%= submit_tag("Sign up!") %></div>
 <% end %>
+</div>
