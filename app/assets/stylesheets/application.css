@@ -101,9 +101,9 @@ nav goodies
 }
 
 #menu ul li:hover a {
-  color: black; #ffffff;
+  color: black;
 }
-    
+
 #menu ul li a {
   display: block; 
   padding: 25px 40px;
